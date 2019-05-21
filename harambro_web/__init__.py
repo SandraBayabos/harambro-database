@@ -17,12 +17,17 @@ login_manager.init_app(app)
 
 #user_loader used to reload the user object from the user ID stored in the session#
 
-
+# change back to get_by_id after done with flask login
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get_by_id(user_id)
+    return User.get_or_none(id=user_id)
 
 # error handlers
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
 
 
 @app.errorhandler(500)
@@ -33,8 +38,3 @@ def internal_server_error(e):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-
-@app.route("/")
-def home():
-    return render_template('home.html')

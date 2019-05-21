@@ -5,7 +5,7 @@ import re
 
 
 class User(BaseModel, UserMixin):
-
+    name = pw.CharField(null=False)
     email = pw.CharField(unique=True, null=False)
     password = pw.CharField(null=False)
 
