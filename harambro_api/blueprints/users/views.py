@@ -33,7 +33,17 @@ def show(email):
             'email': user.email,
 
         },
-        'okay': True
+        'ok': True
     }
 
     return jsonify(resp)
+
+    @users_api_blueprint.route('/password', methods=['GET'])
+    @jwt_required
+    def verify_password(password):
+
+        # something here blah blah blah
+
+        # return jsonify(resp)
+
+        pass
