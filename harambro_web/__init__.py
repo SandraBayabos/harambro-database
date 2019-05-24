@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from flask_login import LoginManager
 from models.user import User
 from harambro_web.blueprints.users.views import users_blueprint
+from harambro_web.blueprints.sessions.views import sessions_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
 
@@ -10,6 +11,7 @@ assets = Environment(app)
 assets.register(bundles)
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
+app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
 
 #FLASK LOGIN FUNCTION#
 login_manager = LoginManager()
