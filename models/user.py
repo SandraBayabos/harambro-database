@@ -17,11 +17,10 @@ class User(BaseModel, UserMixin):
         if duplicate_email:
             self.errors.append('An account with that email already exists')
 
-    @staticmethod
-    def decode_auth_token(auth_token):
+    def encode_auth_token(self, user_id):
         '''
         Generates the Auth Token
-        :return:string
+        :return: string
         '''
         try:
             payload = {
@@ -29,7 +28,6 @@ class User(BaseModel, UserMixin):
                 'iat': datetime.datetime.utcnow(),
                 'sub': user_id
             }
-
             return jwt.encode(
                 payload,
                 app.config.get('SECRET_KEY'),
@@ -37,3 +35,18 @@ class User(BaseModel, UserMixin):
             )
         except Exception as e:
             return e
+
+    @staticmethod
+    def decode_auth_token(auth_token):
+        '''
+        Decodes the the auth token
+        :param auth_token:
+        :return: integer/string
+        '''
+        try:
+            payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+            return payload['sub']
+        except jwt. ExpiredSignatureError:
+            return 0
+        except jwt.InvalidTokenError:
+            return 0

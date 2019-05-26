@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 from flask_jwt import JWT, jwt_required
 from models.user import User
 from models.history import History
+from harambro_web.util.sendgrid import send_email
 
 history_api_blueprint = Blueprint('history_api',
                                   __name__,
@@ -27,8 +28,12 @@ def add_history():
 
     user = User.get_by_id(user_id)
 
-    # sendgrid send email to user.email
-
+    # save link that has been clicked on
     clicked_link = request.get_json('link')
-    history = History(link=clicked_link, user_id=user.id)
+    history = History(
+        link=clicked_link,
+        user_id=user.id)
     history.save()
+
+    # sendgrid send email to user.email
+    send_email(email)
