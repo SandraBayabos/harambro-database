@@ -57,8 +57,9 @@ def authorize():
             flash('No user registered with this account.')
             return redirect(url_for('sessions.show'))
 
-    flash(f'Welcome back {user.username}')
-    return redirect(url_for('users.edit', id=user.id))
+    login_user(user)
+    flash(f'Welcome back {user.name}')
+    return redirect(url_for('users.new', id=user.id))
 
     return redirect(url_for('sessions.google_login'))
 

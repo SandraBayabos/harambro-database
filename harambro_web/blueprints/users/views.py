@@ -33,3 +33,12 @@ def create():
     else:
         flash(f'{user_email} is already taken. Please try again.')
         return render_template('new.html', errors=newuser.errors)
+
+
+@login_required
+@users_blueprint.route('/show/<name>', methods=['GET'])
+def show(name):
+    user = User.get_or_none(User.name == name)
+
+    if current_user == user:
+        return render_template('show.html', name=current_user.name)

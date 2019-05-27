@@ -1,0 +1,21 @@
+body{ 
+  margin-left: 50px;
+  margin-right: 50px
+}
+
+.history-header{
+  text-align: center
+}
+
+.history-page-header6{
+  text-align: center
+}
+
+.history-table{
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto
+
+}

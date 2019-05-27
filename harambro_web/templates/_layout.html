@@ -43,6 +43,12 @@
       <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
       </li>
       {% endif %}
+
+      {% if current_user.is_authenticated %}
+      <li class="nav-item">
+      <a class="nav-link" href="{{url_for('users.show', name=current_user.name)}}">Your Link History</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
