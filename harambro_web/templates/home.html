@@ -6,11 +6,65 @@ Homepage
 {% endblock %}
 {% block content %}
 
-<div class="bg-image"></div>
+<div class="harambro vertical-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-6 align-self-center content">
 
-<div class="bg-text">
-  <h1 class="homepage-header">Welcome to Harambro</h1>
-  <p>Taking helicopter parenting to the next level</p>
+        <div class="branding">
+          <!-- <h1>HaramBro</h1> -->
+          <a href="{{url_for('home')}}">
+            <div class="logo"><img src="static/images/heli_logo.png"></div>
+          </a>
+          <p>Taking helicopter parenting to the next level</p>
+        </div>
+
+        <div class="description">
+          <p>
+            Welcome to HaramBro, this application has been built to protect your
+            children from graphic and violent content on the web.
+            Simply input the keywords of the kind of content you would like to hide from your children.
+          </p>
+        </div>
+
+        <div class="login">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Settings</a>
+          </li>
+          {% endif %}
+
+          {% if not current_user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
+          </li>
+          {% endif %}
+
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
+          </li>
+          {% endif %}
+
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
+          </li>
+          {% endif %}
+
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Settings</a>
+          </li>
+          {% endif %}
+        </div>
+
+        <div class="footer">
+          <p>Built by students at NEXT Academy</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

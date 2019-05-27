@@ -17,7 +17,9 @@
   {% block header %}{% endblock %}
   <title> {% block title %}{% endblock %}HARAMBRO</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{url_for('home')}}">Harambro</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -54,9 +56,7 @@
 
     </ul>
   </div>
-</nav>
-
-<body>
+</nav> -->
 
 
   {% with messages = get_flashed_messages() %}
@@ -75,5 +75,6 @@
 
 
   </footer>
+</body>
 
 </html>
