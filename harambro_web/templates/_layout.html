@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
-    {% assets "home_css" %}
-      <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
 
-    {% assets "home_js" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% block header %}{% endblock %}
-    <title> {% block title %}{% endblock %}HARAMBRO</title>
-  </head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
+  {% assets "home_css" %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+
+  {% assets "home_js" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+
+  {% block header %}{% endblock %}
+  <title> {% block title %}{% endblock %}HARAMBRO</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{url_for('home')}}">Harambro</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,48 +30,50 @@
       </li>
       {% if current_user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="#">My Profile</a>
+        <a class="nav-link" href="#">My Settings</a>
       </li>
       {% endif %}
 
       {% if not current_user.is_authenticated %}
       <li class="nav-item">
-      <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
+        <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
       </li>
       {% endif %}
 
       {% if current_user.is_authenticated %}
       <li class="nav-item">
-      <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
+        <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
       </li>
       {% endif %}
-      
+
       {% if current_user.is_authenticated %}
       <li class="nav-item">
-      <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
+        <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
       </li>
       {% endif %}
 
     </ul>
   </div>
 </nav>
-  <body>
+
+<body>
 
 
   {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
+  <ul class=flashes>
     {% for message in messages %}
-      <li>{{ message }}</li>
+    <li>{{ message }}</li>
     {% endfor %}
-    </ul>
+  </ul>
   {% endif %}
   {% endwith %}
 
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 
 
 
   </footer>
+
 </html>
