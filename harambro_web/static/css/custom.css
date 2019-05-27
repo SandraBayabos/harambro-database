@@ -3,6 +3,16 @@ body{
   margin-right: 50px
 }
 
+.homepage-header{
+  text-align: center;
+  margin-top: 25px;
+  color: antiquewhite
+}
+
+.navbar{
+  width:100%
+}
+
 .history-header{
   text-align: center
 }

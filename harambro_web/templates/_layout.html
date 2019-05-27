@@ -16,8 +16,6 @@
     {% block header %}{% endblock %}
     <title> {% block title %}{% endblock %}HARAMBRO</title>
   </head>
-  <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{url_for('home')}}">Harambro</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +26,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
       </li>
+      {% if current_user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="#">My Profile</a>
       </li>
+      {% endif %}
 
       {% if not current_user.is_authenticated %}
       <li class="nav-item">
@@ -40,18 +40,21 @@
 
       {% if current_user.is_authenticated %}
       <li class="nav-item">
+      <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
+      </li>
+      {% endif %}
+      
+      {% if current_user.is_authenticated %}
+      <li class="nav-item">
       <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
       </li>
       {% endif %}
 
-      {% if current_user.is_authenticated %}
-      <li class="nav-item">
-      <a class="nav-link" href="{{url_for('users.show', name=current_user.name)}}">Your Link History</a>
-      </li>
-      {% endif %}
     </ul>
   </div>
 </nav>
+  <body>
+
 
   {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -65,5 +68,8 @@
 
     {% block content %}
     {% endblock %}
-  </body>
+
+
+
+  </footer>
 </html>

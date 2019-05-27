@@ -7,12 +7,14 @@ from harambro_web.blueprints.sessions.views import sessions_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
 from harambro_web.util.google_oauth import oauth
+from harambro_web.blueprints.history.views import history_blueprint
 
 assets = Environment(app)
 assets.register(bundles)
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
 app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
+app.register_blueprint(history_blueprint, url_prefix="/history")
 
 #FLASK LOGIN FUNCTION#
 login_manager = LoginManager()
