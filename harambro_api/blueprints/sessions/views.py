@@ -35,3 +35,12 @@ def sign_in():
         }
 
         return make_response(jsonify(responseObject)), 401
+
+
+@sessions_api_blueprint.route('/checkpassword', methods=['POST'])
+def check_password():
+    # get the post data
+    # post_data = request.get_json()
+    # # check if user already exists
+    # verify_password = check_password_hash(user.password, post_data.get('password')):
+    pass
