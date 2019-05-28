@@ -21,7 +21,6 @@ def sign_in():
             'status': 'success',
             'message': 'Successfully signed in.',
             'auth_token': auth_token.decode(),
-            # 'user': user.__dict__
             'email': user.email,
             'user_id': user.id
         }
@@ -39,8 +38,38 @@ def sign_in():
 
 @sessions_api_blueprint.route('/checkpassword', methods=['POST'])
 def check_password():
-    # get the post data
-    # post_data = request.get_json()
-    # # check if user already exists
-    # verify_password = check_password_hash(user.password, post_data.get('password')):
-    pass
+    post_data = request.get_json()
+    auth_header = request.headers.get('Authorization')
+
+    # check if user already exists
+    if auth_header:
+        auth_token = auth_header.split(" ")[1]
+
+    # decode the auth_token here blah blah blah
+    user_id = User.decode_auth_token(auth_token)
+
+    current_user = User.get_by_id(user_id)
+
+    if current_user:
+        if check_password_hash(current_user.password, post_data.get('password')):
+            responseObject = {
+                'status': 'success',
+                'message': 'Password successfully authenticated'
+            }
+            print(responseObject)
+            return make_response(jsonify(responseObject)), 201
+
+        else:
+            responseObject = {
+                'status': 'fail',
+                'message': 'Password incorrect. Please try again'
+            }
+
+            return make_response(jsonify(responseObject)), 201
+    else:
+        responseObject = {
+            'status': 'fail',
+            'message': 'Failed at user_id level.'
+        }
+
+        return make_response(jsonify(responseObject)), 201
