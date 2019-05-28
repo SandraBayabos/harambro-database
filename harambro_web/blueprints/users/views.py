@@ -63,14 +63,14 @@ def update(id):
         return render_template('edit.html', user=user)
 
     else:
-        new_user_name = request.form.get('new_user_name')
+        new_name = request.form.get('new_name')
         new_email = request.form.get('new_email')
         new_password = request.form.get('new_password')
         hashed_password = generate_password_hash
         (new_password)
 
         update_user = User.update(
-            username=new_user_name,
+            name=new_name,
             email=new_email,
             password=hashed_password
         ).where(User.id == id)
