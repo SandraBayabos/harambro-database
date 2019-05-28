@@ -1,7 +1,7 @@
 import os
 
 # SECRET KEY
-S3_SECRET = os.environ.get("AWS_SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 class Config(object):
