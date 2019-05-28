@@ -29,7 +29,7 @@ def create():
 
     if newuser.save():
         flash('Welcome to Harambro.')
-        return redirect(url_for('users.new'))
+        return redirect(url_for('home'))
 
     else:
         flash(f'{user_email} is already taken. Please try again.')
