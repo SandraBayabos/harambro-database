@@ -66,8 +66,7 @@ def update(id):
         new_name = request.form.get('new_name')
         new_email = request.form.get('new_email')
         new_password = request.form.get('new_password')
-        hashed_password = generate_password_hash
-        (new_password)
+        hashed_password = generate_password_hash(new_password)
 
         update_user = User.update(
             name=new_name,
@@ -75,9 +74,9 @@ def update(id):
             password=hashed_password
         ).where(User.id == id)
 
-    if not update_user.execute():
-        flash(f"Unable to update, please try again")
-        return render_template('edit.html', user=user)
+        if not update_user.execute():
+            flash(f"Unable to update, please try again")
+            return render_template('edit.html', user=user)
 
-    flash('Successfully updated')
-    return redirect(url_for('home'))
+        flash('Successfully updated')
+        return redirect(url_for('home'))
