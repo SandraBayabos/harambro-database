@@ -21,7 +21,7 @@ body {
   text-align: center;
   border: 1px solid #e9e9e9;
 
-  -webkit-filter: blur(3px);
+  /* -webkit-filter: blur(3px);
   -moz-filter: blur(3px);
   -o-filter: blur(3px);
   -ms-filter: blur(3px);
@@ -35,7 +35,7 @@ body {
       -moz-filter: none;
       -o-filter: none;
       -ms-filter: none;
-      filter: none;
+      filter: none; */
     }
 
 .branding {
@@ -51,22 +51,22 @@ body {
       width: 250px;
       margin: 0 auto;
       
-      /* -webkit-filter: blur(3px);
+      -webkit-filter: blur(3px);
       -moz-filter: blur(3px);
       -o-filter: blur(3px);
       -ms-filter: blur(3px);
       filter: blur(3px);
     
-      transition: 1s; */
+      transition: 1s;
     } 
 
-    .branding .logo img:hover {
-      /* -webkit-filter: none;
+    .branding .logo img:hover { 
+      -webkit-filter: none;
       -moz-filter: none;
       -o-filter: none;
       -ms-filter: none;
-      filter: none; */
-    }
+      filter: none;
+    } 
 
 .description {
   border-bottom: 1px solid #e9e9e9;
@@ -89,7 +89,7 @@ body {
   margin-bottom: 0;
 }
 
-/* .homepage-header{
+.homepage-header{
   text-align: center;
   margin-top: 25px;
   color: antiquewhite
@@ -113,7 +113,7 @@ body {
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto
-} */
+}
 
 /* HELPERS */
 

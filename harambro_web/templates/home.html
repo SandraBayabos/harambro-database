@@ -21,46 +21,13 @@ Homepage
 
         <div class="description">
           <p>
-            Welcome to HaramBro, this application has been built to protect your
+            Welcome to Helikopter, this application has been built to protect your
             children from graphic and violent content on the web.
             Simply input the keywords of the kind of content you would like to hide from your children.
           </p>
         </div>
-
-        <div class="login">
-          {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Settings</a>
-          </li>
-          {% endif %}
-
-          {% if not current_user.is_authenticated %}
-          <li class="nav-item">
-            <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
-          </li>
-          {% endif %}
-
-          {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
-          </li>
-          {% endif %}
-
-          {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
-          </li>
-          {% endif %}
-
-          {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Settings</a>
-          </li>
-          {% endif %}
-        </div>
-
         <div class="footer">
-          <p>Built by students at NEXT Academy</p>
+          <p>Built by the awesome students of Team 2 at NEXT Academy</p>
         </div>
       </div>
     </div>

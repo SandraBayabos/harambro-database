@@ -19,44 +19,52 @@
 </head>
 
 <body>
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{url_for('home')}}">Harambro</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      {% if current_user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="#">My Settings</a>
-      </li>
-      {% endif %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src='/static/images/heli_logo_crop.jpg' width="30px" height="30px" />
+    <a class="navbar-brand" href="{{url_for('home')}}">Helikopter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+        </li>
 
-      {% if not current_user.is_authenticated %}
-      <li class="nav-item">
-        <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
-      </li>
-      {% endif %}
+        {% if not current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('users.new') }}">Sign up</a>
+        </li>
+        {% endif %}
 
-      {% if current_user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
-      </li>
-      {% endif %}
+        {% if not current_user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{{url_for('sessions.google_login')}}" class="btn btn-success">Log In With Google</a>
+        </li>
+        {% endif %}
 
-      {% if current_user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
-      </li>
-      {% endif %}
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Settings</a>
+        </li>
+        {% endif %}
 
-    </ul>
-  </div>
-</nav> -->
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
+        </li>
+        {% endif %}
+
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </nav>
 
 
   {% with messages = get_flashed_messages() %}
