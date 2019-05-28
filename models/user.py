@@ -4,6 +4,7 @@ import peewee as pw
 import re
 import jwt
 import datetime
+from app import app
 
 
 class User(BaseModel, UserMixin):
