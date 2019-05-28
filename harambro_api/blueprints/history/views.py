@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, make_response
 from flask_jwt import JWT, jwt_required
 from models.user import User
 from models.history import History

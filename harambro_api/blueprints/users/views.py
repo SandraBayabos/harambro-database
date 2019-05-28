@@ -15,28 +15,29 @@ def index():
 @users_api_blueprint.route('/<email>', methods=['GET'])
 @jwt_required
 def show(email):
-    user = User.get_or_none(User.email == email)
+    # user = User.get_or_none(User.email == email)
 
-    if not user:
-        resp = {
-            'message': 'No user found with this email',
-            'ok': False
-        }
-        # use jsonify to return a response in a JSON format
-        return jsonify(resp)
+    # if not user:
+    #     resp = {
+    #         'message': 'No user found with this email',
+    #         'ok': False
+    #     }
+    #     # use jsonify to return a response in a JSON format
+    #     return jsonify(resp)
 
-    resp = {
-        'message': 'Found user with this email',
-        'user': {
-            'id': user.id,
-            'name': user.name,
-            'email': user.email,
+    # resp = {
+    #     'message': 'Found user with this email',
+    #     'user': {
+    #         'id': user.id,
+    #         'name': user.name,
+    #         'email': user.email,
 
-        },
-        'ok': True
-    }
+    #     },
+    #     'ok': True
+    # }
 
-    return jsonify(resp)
+    # return jsonify(resp)
+    pass
 
     @users_api_blueprint.route('/password', methods=['GET'])
     @jwt_required
