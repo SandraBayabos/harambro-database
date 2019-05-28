@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
 from models.history import History
+from flask_bootstrap import Bootstrap
 
 
 history_blueprint = Blueprint('history',

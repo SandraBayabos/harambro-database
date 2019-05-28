@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
+from flask_bootstrap import Bootstrap
 
 users_blueprint = Blueprint('users',
                             __name__,

@@ -1,12 +1,38 @@
 {% extends "_layout.html" %}
 {% block title %}
-  Homepage
+Homepage
 {% endblock %}
 {% block header %}
 {% endblock %}
 {% block content %}
 
+<div class="harambro vertical-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-6 align-self-center content">
 
-<h1 class="homepage-header">Welcome to Harambro</h1>
+        <div class="branding">
+          <!-- <h1>HaramBro</h1> -->
+          <a href="{{url_for('home')}}">
+            <div class="logo"><img src="static/images/heli_logo.png"></div>
+          </a>
+          <p>Taking helicopter parenting to the next level</p>
+        </div>
+
+        <div class="description">
+          <p>
+            Welcome to Helikopter, this application has been built to protect your
+            children from graphic and violent content on the web.
+            Simply input the keywords of the kind of content you would like to hide from your children.
+          </p>
+        </div>
+        <div class="footer">
+          <p>Built by the awesome students of Team 2 at NEXT Academy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
