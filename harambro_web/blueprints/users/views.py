@@ -43,3 +43,41 @@ def create():
 
 #     if current_user == user:
 #         return render_template('show.html', name=current_user.name)
+
+@users_blueprint.route('/<id>/edit', methods=["GET"])
+def edit(id):
+    user = User.get_by_id(id)
+    if current_user == user:
+        return render_template('edit.html', user=user)
+    else:
+        flash('You cannot do this action.')
+        return redirect(url_for('home'))
+
+
+@users_blueprint.route('/<id>', methods=["POST"])
+def update(id):
+    user = User.get_by_id(id)
+
+    if not current_user == user:
+        flash('Unauthorised')
+        return render_template('edit.html', user=user)
+
+    else:
+        new_name = request.form.get('new_name')
+        new_email = request.form.get('new_email')
+        new_password = request.form.get('new_password')
+        hashed_password = generate_password_hash
+        (new_password)
+
+        update_user = User.update(
+            name=new_name,
+            email=new_email,
+            password=hashed_password
+        ).where(User.id == id)
+
+    if not update_user.execute():
+        flash(f"Unable to update, please try again")
+        return render_template('edit.html', user=user)
+
+    flash('Successfully updated')
+    return redirect(url_for('home'))

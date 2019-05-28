@@ -1,25 +1,37 @@
-{% extends '_layout.html' %}
+{% extends '_layout.html'%}
 {% block content %}
 
-<h1>Edit your info here:</h1>
 
-<form action="{{url_for('users.update', id=current_user.id)}}" method='post'>
-<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-<div class="form-group">
-<label for"">Username:</label>
-<input type="text" placeholder="enter new username" value="{{user.username}}" name="new_user_name" class="form-control">
+<div class="helikopter vertical-center">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-sm-6 align-self-center content">
+                <h1>Edit your information here:</h1>
+                <form action="{{url_for('users.update', id=current_user.id)}}" method='post'>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <label for="">Username:</label>
+                        <input type="text" placeholder="enter new username" value="{{user.name}}" name="new_name"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Email:</label>
+                        <input type="email" value="{{user.email}}" placeholder="enter new e-mail" name="new_email"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Password:</label>
+                        <input type="password" value="{{user.password}}" placeholder="enter new password"
+                            name="new_password" class="form-control">
+                    </div>
+
+                    <button type="submit" value="Update" class="btn btn-primary">Edit Information</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="form-group">
-<label for="">Email</label>
-<input type="email" value="{{user.email}}" name="new_email" class="form-control">
-</div>
-
-<div class="form-group">
-<label for="">Password</label>
-<input type="password" value="{{user.password}}" name="new_password" class="form-control">
-</div>
-
-<button type ="submit" value = "Update" class="btn btn-primary">Edit Information</button>
 
 {% endblock %}
