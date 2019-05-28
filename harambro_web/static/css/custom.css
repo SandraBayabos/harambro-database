@@ -109,8 +109,12 @@ body {
 }
  
 .navbar-toggler {
+  outline: none;
   border: none;
-  background: transparent !important;
+  background: transparent;
+}
+.navbar-toggler:focus{
+  outline: none;
 }
 .navbar-toggler .top-bar {
   transform: rotate(45deg);
