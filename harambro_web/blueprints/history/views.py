@@ -16,5 +16,8 @@ history_blueprint = Blueprint('history',
 def show(name):
     user = User.get_or_none(User.name == name)
 
-    if current_user == user:
-        return render_template('show.html', name=current_user.name)
+    if not user:
+        flash('There is no one with that username. Check spelling.')
+        return redirect(url_for('home'))
+    else:
+        return render_template('show.html', user=user)

@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, make_response
+from flask import Blueprint, jsonify, make_response, request
 from flask_jwt import JWT, jwt_required
 from models.user import User
 from models.history import History
-from harambro_web.util.sendgrid import send_email
+# from harambro_api.util.sendgrid import send_email
 
 history_api_blueprint = Blueprint('history_api',
                                   __name__,
@@ -11,10 +11,41 @@ history_api_blueprint = Blueprint('history_api',
 
 @history_api_blueprint.route('/add_entry', methods=['POST'])
 def add_history():
+    clicked_link = request.get_json()
     auth_header = request.headers.get('Authorization')
 
-    if auth_header:
-        auth_token = auth_header.split(" ")[1]
+    if not auth_header:
+        responseObject = {
+            'status': 'failed',
+            'message': 'No JWT in Authorization Header'
+        }
+        return make_response(jsonify(responseObject)), 401
+
+    # decode the auth_token to get the user_id
+    auth_token = auth_header.split(" ")[1]
+    user_id = User.decode_auth_token(auth_token)
+
+    current_user = User.get_by_id(user_id)
+
+    # save link that has been clicked on
+    if current_user and clicked_link:
+        history = History(
+            link=clicked_link['link'],
+            user_id=current_user.id)
+        if history.save():
+            responseObject = {
+                'status': 'success'
+            }
+            return make_response(jsonify(responseObject)), 201
+        else:
+            responseObject = {
+                'status': 'failed',
+                'message': 'History not saved'
+            }
+            return make_response(jsonify(responseObject)), 401
+
+    # sendgrid send email to user.email
+        # send_email(email)
 
     else:
         responseObject = {
@@ -23,17 +54,3 @@ def add_history():
         }
 
         return make_response(jsonify(responseObject)), 401
-
-    user_id = User.decode_auth_token(auth_token)
-
-    user = User.get_by_id(user_id)
-
-    # save link that has been clicked on
-    clicked_link = request.get_json('link')
-    history = History(
-        link=clicked_link,
-        user_id=user.id)
-    history.save()
-
-    # sendgrid send email to user.email
-    send_email(email)
