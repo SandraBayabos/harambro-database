@@ -158,7 +158,9 @@ body {
   margin-right: auto
 }
 
-
+.flashes{
+  color: #FFFFFF;
+}
 /* HELPERS */
 
 .vertical-center {
