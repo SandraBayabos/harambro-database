@@ -13,15 +13,22 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Link</th>
+                            <th scope="col">Attempted Access Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>{{user.link}}</td>
-                            <td></td>
+                            <th scope="row"></th>
+                            
+                            <td>{% for link in user.links %}
+                            <a href="{{link.link}}">Blocked Site</a>
+                            {% endfor %}</td>
+
+                            <td>{% for link in user.links %}
+                            {{link.created_at.strftime('%d '' %B '' %Y')}}
+                            {% endfor %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

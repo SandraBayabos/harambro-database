@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, make_response, request
 from flask_jwt import JWT, jwt_required
 from models.user import User
 from models.history import History
-# from harambro_api.util.sendgrid import send_email
+from harambro_api.util.sendgrid import send_email
 
 history_api_blueprint = Blueprint('history_api',
                                   __name__,
@@ -37,15 +37,15 @@ def add_history():
                 'status': 'success'
             }
             return make_response(jsonify(responseObject)), 201
+        # sendgrid send email to user.email
+            send_email(email)
+
         else:
             responseObject = {
                 'status': 'failed',
                 'message': 'History not saved'
             }
             return make_response(jsonify(responseObject)), 401
-
-    # sendgrid send email to user.email
-        # send_email(email)
 
     else:
         responseObject = {

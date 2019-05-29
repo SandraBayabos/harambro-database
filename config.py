@@ -2,6 +2,7 @@ import os
 
 # SECRET KEY
 SECRET_KEY = os.environ.get("SECRET_KEY")
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 
 
 class Config(object):
