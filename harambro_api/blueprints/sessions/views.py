@@ -48,7 +48,7 @@ def check_password():
     # decode the auth_token here
     user_id = User.decode_auth_token(auth_token)
 
-    current_user = User.get_by_id(user_id)
+    current_user = User.get_or_none(user_id)
 
     if current_user:
         if check_password_hash(current_user.password, post_data.get('password')):
@@ -72,4 +72,4 @@ def check_password():
             'message': 'Failed at user_id level.'
         }
 
-        return make_response(jsonify(responseObject)), 201
+        return make_response(jsonify(responseObject)), 401
