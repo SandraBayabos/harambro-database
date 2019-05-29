@@ -45,7 +45,7 @@ def check_password():
     if auth_header:
         auth_token = auth_header.split(" ")[1]
 
-    # decode the auth_token here blah blah blah
+    # decode the auth_token here
     user_id = User.decode_auth_token(auth_token)
 
     current_user = User.get_by_id(user_id)
