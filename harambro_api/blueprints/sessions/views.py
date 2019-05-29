@@ -65,7 +65,7 @@ def check_password():
                 'message': 'Password incorrect. Please try again'
             }
 
-            return make_response(jsonify(responseObject)), 201
+            return make_response(jsonify(responseObject)), 401
     else:
         responseObject = {
             'status': 'fail',
