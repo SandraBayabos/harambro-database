@@ -5,29 +5,39 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center content">
-                <h2 class="history-header">Your History</h2>
+                <h1 class="history-header">Your History</h1>
                 <h6 class="history-page-header6">Below is a list of blocked links that have been attempted to be
                     accessed either by yourself or someone using your computer.</h6>
 
                 <table class="history-table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Link</th>
-                            <th scope="col">Attempted Access Date</th>
+                          <th class=" justify-content-center" scope="col">Link</th>
+                            <th class=" justify-content-center" scope="col">Attempted Access Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row"></th>
+                         
+                            <td>
+                            <ul class = "justify-content-center" style="list-style: none">
+                            {% for link in user.links %}
+                            <li class="blocked-links w-100">
+                                <a href="{{link.link}}" class="text-center">
+                                    <span id="link-link" class="text-dark">{{(link.link).split('/')[2]}}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                            </ul>
+                            </td>
 
-                            <td>{% for link in user.links %}
-                                <a href="{{link.link}}">Blocked Site</a>
-                                {% endfor %}</td>
-
-                            <td>{% for link in user.links %}
-                                {{link.created_at.strftime('%d '' %B '' %Y')}}
-                                {% endfor %}
+                            <td>
+                            <ul style="list-style:none">
+                            {% for link in user.links %}
+                            <li>
+                            {{link.created_at.strftime('%d '' %B '' %Y')}}
+                            {% endfor %}
+                            </li>
                             </td>
                         </tr>
                     </tbody>
