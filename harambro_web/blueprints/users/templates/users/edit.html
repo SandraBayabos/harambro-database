@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-sm-6 align-self-center content">
-                <h1>Edit your information here:</h1>
+                <h2>Edit your information here:</h2>
 
                 <form action="{{url_for('users.update', id=current_user.id)}}" method='post'>
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
