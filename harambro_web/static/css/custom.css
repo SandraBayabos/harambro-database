@@ -4,39 +4,29 @@
 
 html, body {
   height: 100%;
-  /* background: #000000; */
+  background: #fff8e0;
 }
 
 body {
-  background-image: url("/static/images/heli_bg.png");
+  /* background-image: url("/static/images/heli_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
+  font-family: 'Open Sans', sans-serif;
+  color: #333333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 400;
 }
 
 .content {
-  padding: 20px 50px;
+  padding: 30px 50px;
   background: #FFFFFF;
   border-radius: 10px;
-  text-align: center;
+  box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.23);
   border: 1px solid #e9e9e9;
-
-  /* -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
-
-  transition: 1s;
 }
-
-    .content:hover {
-      -webkit-filter: none;
-      -moz-filter: none;
-      -o-filter: none;
-      -ms-filter: none;
-      filter: none; */
-    }
 
 .branding {
   border-bottom: 1px solid #e9e9e9;
@@ -142,35 +132,6 @@ body {
   transform: rotate(0);
 }
 
-.history-header{
-  text-align: center
-}
-
-.history-page-header6{
-  text-align: center
-}
-
-.history-table{
-  width: 90%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  /* counter-reset: rowNumber; */
-}
-
-
-
-/* .history-table tr{
-  counter-increment:rowNumber
-}
-
-.history-table tr td:first-child::before{
-  content: counter(rowNumber);
-  min-width: 1em;
-  margin-right: 0.5em
-} */
-
 .flashes{
   color: #FFFFFF;
 }
@@ -182,4 +143,34 @@ body {
 
   display: flex;
   align-items: center;
+}
+
+@keyframes wiggle {
+	0% {-webkit-transform: rotate(0deg);}
+	2% {-webkit-transform: rotate(-1deg);}
+	3.5% {-webkit-transform: rotate(1deg);}
+	5% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(0deg);}
+}
+
+.bg-pic {
+  position: fixed;
+  bottom: -100px;
+  right: 0;
+  width: 30vw;
+  animation: wiggle 10s infinite;
+}
+
+.text-underline {
+  border-bottom: solid 2px #ff6564;
+  padding: 6px 0;
+}
+
+a {
+  color: #b32221;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #ff6564;
 }

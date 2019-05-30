@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
   {% assets "home_css" %}
   <link rel="stylesheet" href="{{ ASSET_URL }}">
@@ -22,36 +23,36 @@
   <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="navbar bg-light">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
+        <ul class="nav justify-content-center mx-auto">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
           </li>
           {% if not current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('users.new') }}">Sign up</a>
           </li>
           {% endif %}
 
           {% if not current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('sessions.show') }}">Sign in</a>
           </li>
           {% endif %}
 
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('users.edit', id=current_user.id) }}">Edit settings</a>
           </li>
           {% endif %}
 
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('history.show', name=current_user.name)}}">Your Link History</a>
           </li>
           {% endif %}
 
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item mx-3">
             <a class="nav-link" href="{{url_for('sessions.logout')}}">Logout</a>
           </li>
           {% endif %}
