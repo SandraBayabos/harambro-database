@@ -9,7 +9,7 @@ def send_email(email):
         from_email='admin@helikopter.com',
         to_emails=email,
         subject='Someone has tried to access a prohibited website',
-        html_content='Someone has tried to access a website that you have blocked. Previous links can be checked in your account.')
+        html_content='<h3>Hello,</h3><hr><br/><br/><p>Someone has tried to access a website that you have blocked. <br/><br/>Previous links can be viewed in your Link History page on <a href="https://helikopter.herokuapp.com/users/new">Your Account</a>.')
     try:
         sg = SendGridAPIClient(SENDGRID_API_KEY)
         response = sg.send(message)
