@@ -29,6 +29,10 @@ def add_history():
 
     # save link that has been clicked on
     if current_user and clicked_link:
+        email = current_user.email
+        name = current_user.name
+        # sendgrid send email to user.email
+        send_email(email)
         history = History(
             link=clicked_link['link'],
             user_id=current_user.id)
@@ -37,8 +41,6 @@ def add_history():
                 'status': 'success'
             }
             return make_response(jsonify(responseObject)), 201
-        # sendgrid send email to user.email
-            send_email(email)
 
         else:
             responseObject = {
