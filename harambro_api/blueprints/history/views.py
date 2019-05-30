@@ -3,7 +3,6 @@ from flask_jwt import JWT, jwt_required
 from models.user import User
 from models.history import History
 from harambro_api.util.sendgrid import send_email
-from datetime import datetime
 
 history_api_blueprint = Blueprint('history_api',
                                   __name__,
