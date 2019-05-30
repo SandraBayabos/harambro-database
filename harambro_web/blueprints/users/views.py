@@ -28,7 +28,7 @@ def create():
     )
 
     if newuser.save():
-        flash('Welcome to Harambro.')
+        flash('Welcome to the Helikopter App.')
         return redirect(url_for('home'))
 
     else:
