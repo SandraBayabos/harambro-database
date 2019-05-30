@@ -80,3 +80,7 @@ def update(id):
 
         flash('Successfully updated')
         return redirect(url_for('home'))
+
+@users_blueprint.route('/help', methods=["GET"])
+def help():
+    return render_template('help.html')
