@@ -27,7 +27,7 @@
                                 </a>
                             </td>
                             <td class="font-weight-light">
-                                {{link.created_at.strftime('%d '' %B '' %Y '' %H:%M:%S')}}
+                                {{link.created_at.strftime('%d '' %B '' %Y '' %H:%M:%S') + timedelta(hours=8)}}
                             </td>
                         </tr>
                     {% endfor %}

@@ -7,16 +7,16 @@ from datetime import timedelta
 
 class BaseModel(pw.Model):
     created_at = pw.DateTimeField(
-        default=datetime.datetime.now() + timedelta(hours=8))
+        default=datetime.datetime.now)
     updated_at = pw.DateTimeField(
-        default=datetime.datetime.now() + timedelta(hours=8))
+        default=datetime.datetime.now)
 
     def save(self, *args, **kwargs):
         self.errors = []
         self.validate()
 
         if len(self.errors) == 0:
-            self.updated_at = datetime.datetime.now() + timedelta(hours=8)
+            self.updated_at = datetime.datetime.now()
             return super(BaseModel, self).save(*args, **kwargs)
         else:
             return 0
