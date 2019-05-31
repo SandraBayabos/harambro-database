@@ -153,6 +153,13 @@ h1,h2,h3,h4,h5,h6 {
 	100% {-webkit-transform: rotate(0deg);}
 }
 
+.bg-pic-lightbulb{
+  position: fixed;
+  bottom:-50px;
+  right: 0;
+  width: 30vw
+}
+
 .bg-pic {
   position: fixed;
   bottom: -100px;
