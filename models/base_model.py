@@ -7,9 +7,9 @@ from datetime import timedelta
 
 class BaseModel(pw.Model):
     created_at = pw.DateTimeField(
-        default=datetime.datetime.now + timedelta(hours=8))
+        default=datetime.datetime.now() + timedelta(hours=8))
     updated_at = pw.DateTimeField(
-        default=datetime.datetime.now + timedelta(hours=8))
+        default=datetime.datetime.now() + timedelta(hours=8))
 
     def save(self, *args, **kwargs):
         self.errors = []
