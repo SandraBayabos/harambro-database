@@ -27,7 +27,7 @@
                                 </a>
                             </td>
                             <td class="font-weight-light">
-                                {{convert(link.created_at)}}
+                                {{link.created_at.strftime('%d '' %B '' %Y '' %H:%M:%S')}}
                             </td>
                         </tr>
                     {% endfor %}
