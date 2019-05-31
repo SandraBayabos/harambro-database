@@ -36,7 +36,7 @@ def sign_in():
     return redirect(url_for('home'))
 
 
-@sessions_blueprint.route('/logout', methods=['POST'])
+@sessions_blueprint.route('/logout')
 @login_required
 def logout():
     logout_user()
