@@ -20,4 +20,4 @@ def show(name):
         flash('There is no one with that username. Check spelling.')
         return redirect(url_for('home'))
     else:
-        return render_template('show.html', user=user)
+        return render_template('show.html', convert=History.convert_time, user=user)
