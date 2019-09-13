@@ -80,3 +80,8 @@ def update(id):
 
         flash('Successfully updated')
         return redirect(url_for('home'))
+
+
+# @users_blueprint.route('/<id>/delete', methods=["POST"])
+# def delete_history():
+#     user = User.get_by_id(id)
